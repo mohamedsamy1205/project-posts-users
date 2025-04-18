@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Posts {
@@ -13,7 +14,7 @@ public class Posts {
     private Long id;
     private String title;
     private String content;
-    @MenyToOne
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
