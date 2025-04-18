@@ -1,22 +1,34 @@
 package com.post.post.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "posts")
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
+
     private String content;
+    @Column(name = "username")
+    private String username;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "username", insertable = false, updatable = false)
     private Users user;
+
+    public Posts() {
+    }
+    
+    public Posts(Long id, String title, String content, String username) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.username = username;
+    }
+
 
     public Long getId() {
         return this.id;
@@ -42,6 +54,14 @@ public class Posts {
         this.content = content;
     }
 
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Users getUser() {
         return this.user;
     }
@@ -49,6 +69,8 @@ public class Posts {
     public void setUser(Users user) {
         this.user = user;
     }
-
+    
     
 }
+
+    

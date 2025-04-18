@@ -1,28 +1,28 @@
 package com.post.post.models;
 
-import java.util.List;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class Users {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @OneToMany(mappedBy = "users")
-    private List<Posts> posts;
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
 
     public Users() {
     }
-
-
-
-    public Users(Long id, String name, List<Posts> posts) {
-        this.id = id;
-        this.name = name;
-        this.posts = posts;
-    }
-
+    
     public Long getId() {
         return this.id;
     }
@@ -32,20 +32,21 @@ public class Users {
     }
 
     public String getName() {
-        return this.name;
+        return this.username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String username) {
+        this.username = username;
     }
 
-    public List<Posts> getPosts() {
-        return this.posts;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setPosts(List<Posts> posts) {
-        this.posts = posts;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    
 
 }
+
+    
