@@ -24,7 +24,7 @@ public class Controller {
         return "createdUser";
     }
     @GetMapping("delete")
-    public String getMethodName() {
+    public String delete() {
         services.deleteUser();
         return "deletedUser";
     }

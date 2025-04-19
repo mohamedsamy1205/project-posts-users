@@ -2,11 +2,14 @@ package com.post.post.models;
 
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +28,8 @@ public class Users {
     private String username;
     @Column(name = "email", unique = true, nullable = false)
     private String email;
+    @OneToMany(mappedBy = "user")
+    private List<Posts> posts;
 
 }
 
