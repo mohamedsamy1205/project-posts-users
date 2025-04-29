@@ -22,7 +22,7 @@ public class Posts {
     private String title;
     @Column(name = "content")
     private String content;
-    @Column(name = "username")
+    @Column(name = "username" )
     private String username;
 
     @ManyToOne
